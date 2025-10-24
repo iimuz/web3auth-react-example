@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
+import { ProvidePlugin } from '@rspack/core';
 
 const { publicVars } = loadEnv({ prefixes: ['WEB3AUTH_'] });
 
@@ -21,7 +22,7 @@ export default defineConfig({
         },
       },
       plugins: [
-        new (require('@rspack/core').ProvidePlugin)({
+        new ProvidePlugin({
           Buffer: ['buffer', 'Buffer'],
           process: 'process/browser',
         }),
